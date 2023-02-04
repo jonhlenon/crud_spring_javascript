@@ -29,7 +29,7 @@ public class FuncionarioRestController {
 		funcionarios.add(f2);
 	}
 	
-	// Incluir produto
+	// Incluir funcionarios
 	@PostMapping("/funcionarios")
 	public Funcionario salvarFuncionario(@RequestBody Funcionario funcionario) {
 		System.out.println("Inserindo um novo fucionario...");
@@ -42,7 +42,7 @@ public class FuncionarioRestController {
 		return funcionario;
 	}
 	
-	// Alterar produto
+	// Alterar funcionarios
 	@PutMapping("/funcionarios")
 	public Funcionario atualizarFuncionario(@RequestBody Funcionario funcionario) {
 		Funcionario f = findById(funcionario.getId());
@@ -60,7 +60,7 @@ public class FuncionarioRestController {
 		return f;
 	}
 	
-	// Excluir produto
+	// Excluir funcionarios
 	@DeleteMapping(value = "/funcionarios/{id}")
 	public void deletarFuncionario(@PathVariable Long id) {
 		Funcionario f = findById(id);
