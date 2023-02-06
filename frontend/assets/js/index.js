@@ -26,6 +26,10 @@ function criarTabela(funcionarios) {
                                                                 currency: 'BRL', 
                                                                 style: 'currency'
                                                             });
+
+            const tdDatanascimento = document.createElement('td');
+            tdDatanascimento.innerHTML = funcionario.datanascimento.toLocaleTimeString();
+            logElem.innerHTML += `${timeStr}: ${msg}<br/>`});
     
             const acaoAlterar = document.createElement('a');
             acaoAlterar.innerHTML = 'Alterar';
@@ -55,14 +59,14 @@ function criarTabela(funcionarios) {
             tr.appendChild(tdNome);
             tr.appendChild(tdNumerodedependentes);
             tr.appendChild(tdSalario);
+            tr.appendChild(tdDatanascimento);
             tr.appendChild(tdAcoes);
     
             return tr;
-        });
+        };
         
         linhas.forEach(linha => corpoTabela.appendChild(linha));
     }
-}
 
 async function listarFuncionarios() {
     const res = await axios.get(API, {});

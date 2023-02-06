@@ -1,4 +1,4 @@
-let id, idForm, nomeForm, numdepenForm, salarioForm;
+let id, idForm, nomeForm, numdepenForm, salarioForm, datanascForm;
 const sURL = 'http://localhost:8081/api/funcionarios/';
 
 window.onload = async function (e) {
@@ -10,6 +10,7 @@ window.onload = async function (e) {
     nomeForm = document.querySelector('#iNome');
     numdepenForm = document.querySelector('#iNumerodedependentes');
     salarioForm = document.querySelector('#iSalario');
+    datanascForm = document.querySelector('#iDatanascimento');
 
     const produto = await buscarFuncianario(id);
     preencherForm(funcionario);
@@ -20,7 +21,9 @@ function preencherForm(funcionario) {
     nomeForm.value = funcionario.nome;
     numdepenForm.value = funcionario.numerodedependentes;
     salarioForm.value = funcionario.salario;
+    datanascForm.value = funcionario.Datanascimento;
 }
+
 
 async function buscarFuncinario(id) {
     const resposta = await axios.get(sURL + id);
@@ -33,8 +36,9 @@ async function alterarFuncionario() {
     const nome = nomeForm.value; 
     const numerodedependentes = numdepenForm.value;
     const salario = salarioForm.value;
+    const Datanascimento = datanascForm.value;
 
-    axios.put(sURL, { id, nome, numerodedependentes, salario })
+    axios.put(sURL, { id, nome, numerodedependentes, salario, Datanascimento })
         .then(res => {
             alert(JSON.stringify(res.data));
             console.log(res.data);
